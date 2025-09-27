@@ -1,0 +1,13 @@
+name: Level114
+main: io.level114.MinerMonitor
+version: 0.1.2
+api-version: '1.20'
+author: Level114
+commands:
+  level114:
+    description: Level114 Miner Monitor
+    usage: /level114 <status>
+    permission: level114.admin
+permissions:
+  level114.admin:
+    default: op
