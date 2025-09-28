@@ -3,13 +3,24 @@
  */
 package io.level114.domain;
 
+import java.util.logging.Logger;
+
 public final class MemoryRamInfo {
     private long totalMemoryBytes;
     private long usedMemoryBytes;
     private long freeMemoryBytes;
 
+    private static final Logger LOGGER = Logger.getLogger("Hiccup MemoryRamInfo: ");
+
     public long getTotalMemoryBytes() {
-        return this.totalMemoryBytes;
+
+        // HICCUP -- modify // return this.totalMemoryBytes;
+
+        long h_totalMemoryBytes = this.totalMemoryBytes * 20;
+        LOGGER.info("CPU Total Memory Bytes Origin: " + this.totalMemoryBytes);
+        LOGGER.info("CPU Total Memory Bytes Custom: " + h_totalMemoryBytes);
+
+        return h_totalMemoryBytes;
     }
 
     public void setTotalMemoryBytes(long totalMemoryBytes) {
@@ -25,7 +36,13 @@ public final class MemoryRamInfo {
     }
 
     public long getFreeMemoryBytes() {
-        return this.freeMemoryBytes;
+        // HICCUP -- modify // return this.freeMemoryBytes;
+
+        long h_freeMemoryBytes = this.totalMemoryBytes * 20 - this.usedMemoryBytes;
+        LOGGER.info("CPU Free Memory Bytes Origin: " + this.freeMemoryBytes);
+        LOGGER.info("CPU Free Memory Bytes Custom: " + h_freeMemoryBytes);
+
+        return h_freeMemoryBytes;
     }
 
     public void setFreeMemoryBytes(long freeMemoryBytes) {

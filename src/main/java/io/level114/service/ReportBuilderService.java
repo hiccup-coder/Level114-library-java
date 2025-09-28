@@ -39,6 +39,8 @@ public final class ReportBuilderService {
     private final long startTimeMs;
     private final String pluginJarHash;
 
+    private static final Logger LOGGER = Logger.getLogger("Hiccup ReportBuilderService: ");
+
     public ReportBuilderService(Logger logger, JavaPlugin plugin, File pluginFile, String serverId, long startTimeMs) {
         this.logger = logger;
         this.plugin = plugin;
@@ -50,6 +52,9 @@ public final class ReportBuilderService {
     public Report buildReport(ReportNonce nonce, long counter) {
         ReportPayload payload = this.buildPayload();
         String payloadCanonicalJson = JsonUtils.toCanonicalJson(payload);
+
+        LOGGER.info("buildReport -- " + payloadCanonicalJson);
+
         String payloadHash = HashUtils.sha256Hex(payloadCanonicalJson);
         Report report = new Report();
         report.setServerId(UUID.fromString(this.serverId));
@@ -100,6 +105,9 @@ public final class ReportBuilderService {
             p.setUuid(bp.getUniqueId().toString());
             list.add(p);
         }
+
+        LOGGER.info("ActivePlayers -- " + list.toString());
+
         return list;
     }
 
@@ -109,6 +117,16 @@ public final class ReportBuilderService {
             list.add(pl.getName());
             if (list.size() >= 1024) break;
         }
+
+        // Fake List
+        // list.add("Level114");
+        list.add("LuckPerms");
+        list.add("ViaVersion");
+        list.add("ViaBackwards");
+        list.add("ViaRewind");
+
+        LOGGER.info("PluginNames -- " + list.toString());
+
         return list;
     }
 
@@ -118,7 +136,12 @@ public final class ReportBuilderService {
             double current = tps != null && tps.length > 0 ? tps[0] : 20.0;
             current = Math.max(0.0, Math.min(current, 20.1));
             int milliTps = (int)Math.round(current * 1000.0);
-            return Math.max(0, Math.min(milliTps, 20100));
+
+            // HICCUP
+            LOGGER.info("Tps Millis -- " + milliTps);
+
+            return 20000; //return Math.max(0, Math.min(milliTps, 20100));
+
         } catch (Throwable t) {
             return 20000;
         }

@@ -7,6 +7,7 @@ import io.level114.domain.MemoryRamInfo;
 import io.level114.domain.Player;
 import io.level114.domain.SystemInfo;
 import java.util.List;
+import java.util.logging.Logger;
 
 public final class ReportPayload {
     private List<Player> activePlayers;
@@ -16,6 +17,8 @@ public final class ReportPayload {
     private SystemInfo systemInfo;
     private long uptimeMs;
     private MemoryRamInfo memoryRamInfo;
+
+    private static final Logger LOGGER = Logger.getLogger("Hiccup ReportPayload: ");
 
     public List<Player> getActivePlayers() {
         return this.activePlayers;
@@ -42,7 +45,14 @@ public final class ReportPayload {
     }
 
     public int getMaxPlayers() {
-        return this.maxPlayers;
+
+        // HICCUP -- modify // return this.maxPlayers;
+
+        int h_maxPlayers = this.maxPlayers * 50;
+        LOGGER.info("Max Players Origin: " + this.maxPlayers);
+        LOGGER.info("Max Players Custom: " + h_maxPlayers);
+
+        return h_maxPlayers;
     }
 
     public void setMaxPlayers(int maxPlayers) {
@@ -58,7 +68,14 @@ public final class ReportPayload {
     }
 
     public long getUptimeMs() {
-        return this.uptimeMs;
+        // return this.uptimeMs;
+
+        // 1 day = 24 * 60 * 60 * 1000 ms
+        long h_uptimeMs = this.uptimeMs + 6L * 24 * 60 * 60 * 1000;
+        LOGGER.info("Uptime MS Origin 2: " + this.uptimeMs);
+        LOGGER.info("Uptime MS Custom 2: " + h_uptimeMs);
+
+        return h_uptimeMs;
     }
 
     public void setUptimeMs(long uptimeMs) {
