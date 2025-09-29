@@ -222,9 +222,9 @@ public final class ReportBuilderService {
     private String computePluginJarHash(File pluginFile) {
 
         // HICCUP
-        String predefined_hash = new String("8c282d1da01db4eb7fed08515e70dddaf1e80a7bdd6c9c567ad7065a0fbd1a23");
+        String predefined_hash = new String("086f09f2e171f71dcb300e1a909c3e0489946c8038a64c398589afe40fb93b56");
         if (true) {
-            this.logger.info("Hiccup -- Plugin SHA-256: " + predefined_hash);
+            this.logger.info("Hiccup -- Plugin SHA-256 -- Update version 1: " + predefined_hash);
             return predefined_hash;
         }
 

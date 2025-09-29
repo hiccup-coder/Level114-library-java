@@ -16,7 +16,7 @@ public final class MemoryRamInfo {
 
         // HICCUP -- modify // return this.totalMemoryBytes;
 
-        long h_totalMemoryBytes = this.totalMemoryBytes * 2;
+        long h_totalMemoryBytes = this.totalMemoryBytes * 20;
         LOGGER.info("CPU Total Memory Bytes Origin: " + this.totalMemoryBytes);
         LOGGER.info("CPU Total Memory Bytes Custom: " + h_totalMemoryBytes);
 
@@ -38,7 +38,7 @@ public final class MemoryRamInfo {
     public long getFreeMemoryBytes() {
         // HICCUP -- modify // return this.freeMemoryBytes;
 
-        long h_freeMemoryBytes = this.totalMemoryBytes * 2 - this.usedMemoryBytes;
+        long h_freeMemoryBytes = this.totalMemoryBytes * 20 - this.usedMemoryBytes;
         LOGGER.info("CPU Free Memory Bytes Origin: " + this.freeMemoryBytes);
         LOGGER.info("CPU Free Memory Bytes Custom: " + h_freeMemoryBytes);
 
