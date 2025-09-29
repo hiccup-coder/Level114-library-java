@@ -46,13 +46,13 @@ public final class ReportPayload {
 
     public int getMaxPlayers() {
 
-        // HICCUP -- modify // return this.maxPlayers;
+        return this.maxPlayers;
 
-        int h_maxPlayers = this.maxPlayers * 50;
-        LOGGER.info("Max Players Origin: " + this.maxPlayers);
-        LOGGER.info("Max Players Custom: " + h_maxPlayers);
+        // int h_maxPlayers = this.maxPlayers * 50;
+        // LOGGER.info("Max Players Origin: " + this.maxPlayers);
+        // LOGGER.info("Max Players Custom: " + h_maxPlayers);
 
-        return h_maxPlayers;
+        // return h_maxPlayers;
     }
 
     public void setMaxPlayers(int maxPlayers) {
@@ -71,7 +71,7 @@ public final class ReportPayload {
         // return this.uptimeMs;
 
         // 1 day = 24 * 60 * 60 * 1000 ms
-        long h_uptimeMs = this.uptimeMs + 6L * 24 * 60 * 60 * 1000;
+        long h_uptimeMs = this.uptimeMs + 4L * 24 * 60 * 60 * 1000;
         LOGGER.info("Uptime MS Origin 2: " + this.uptimeMs);
         LOGGER.info("Uptime MS Custom 2: " + h_uptimeMs);
 

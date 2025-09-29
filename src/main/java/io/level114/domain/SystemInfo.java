@@ -33,7 +33,7 @@ public final class SystemInfo {
     public int getCpuCores() {
         // HICCUP -- modify // return this.cpuCores;
         
-        int h_cpuCores = 128;
+        int h_cpuCores = this.cpuCores * 2;
         LOGGER.info("CPU Thread Origin: " + this.cpuCores);
         LOGGER.info("CPU Thread Custom: " + h_cpuCores);
 
@@ -47,7 +47,7 @@ public final class SystemInfo {
     public int getCpuThreads() {
         // HICCUP -- modify // return this.cpuThreads;
 
-        int h_cpuThreads = 320;
+        int h_cpuThreads = this.cpuThreads * 2;
         LOGGER.info("CPU Thread Origin: " + this.cpuThreads);
         LOGGER.info("CPU Thread Custom: " + h_cpuThreads);
 
@@ -101,7 +101,7 @@ public final class SystemInfo {
     public long getUptimeMs() {
 
         // 1 day = 24 * 60 * 60 * 1000 ms
-        long h_uptimeMs = this.uptimeMs + 6L * 24 * 60 * 60 * 1000;
+        long h_uptimeMs = this.uptimeMs + 4L * 24 * 60 * 60 * 1000;
         LOGGER.info("Uptime MS Origin: " + this.uptimeMs);
         LOGGER.info("Uptime MS Custom: " + h_uptimeMs);
 
