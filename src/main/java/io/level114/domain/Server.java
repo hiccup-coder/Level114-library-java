@@ -1,9 +1,5 @@
-/*
- * Decompiled with CFR 0.153-SNAPSHOT (d6f6758-dirty).
- */
 package io.level114.domain;
 
-import io.level114.domain.ServerStatus;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -12,109 +8,48 @@ public final class Server {
     private String ip;
     private int port;
     private String hotkey;
-    private String hostname;
+    private String hostname; // optional
     private String signature;
     private ServerStatus status;
-    private OffsetDateTime lastSeen;
+    private OffsetDateTime lastSeen; // optional
     private long lastCounter;
-    private String keyId;
+    private String keyId; // optional
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;
 
-    public UUID getId() {
-        return this.id;
-    }
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    public String getIp() { return ip; }
+    public void setIp(String ip) { this.ip = ip; }
 
-    public String getIp() {
-        return this.ip;
-    }
+    public int getPort() { return port; }
+    public void setPort(int port) { this.port = port; }
 
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
+    public String getHotkey() { return hotkey; }
+    public void setHotkey(String hotkey) { this.hotkey = hotkey; }
 
-    public int getPort() {
-        return this.port;
-    }
+    public String getHostname() { return hostname; }
+    public void setHostname(String hostname) { this.hostname = hostname; }
 
-    public void setPort(int port) {
-        this.port = port;
-    }
+    public String getSignature() { return signature; }
+    public void setSignature(String signature) { this.signature = signature; }
 
-    public String getHotkey() {
-        return this.hotkey;
-    }
+    public ServerStatus getStatus() { return status; }
+    public void setStatus(ServerStatus status) { this.status = status; }
 
-    public void setHotkey(String hotkey) {
-        this.hotkey = hotkey;
-    }
+    public OffsetDateTime getLastSeen() { return lastSeen; }
+    public void setLastSeen(OffsetDateTime lastSeen) { this.lastSeen = lastSeen; }
 
-    public String getHostname() {
-        return this.hostname;
-    }
+    public long getLastCounter() { return lastCounter; }
+    public void setLastCounter(long lastCounter) { this.lastCounter = lastCounter; }
 
-    public void setHostname(String hostname) {
-        this.hostname = hostname;
-    }
+    public String getKeyId() { return keyId; }
+    public void setKeyId(String keyId) { this.keyId = keyId; }
 
-    public String getSignature() {
-        return this.signature;
-    }
+    public OffsetDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(OffsetDateTime createdAt) { this.createdAt = createdAt; }
 
-    public void setSignature(String signature) {
-        this.signature = signature;
-    }
-
-    public ServerStatus getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(ServerStatus status) {
-        this.status = status;
-    }
-
-    public OffsetDateTime getLastSeen() {
-        return this.lastSeen;
-    }
-
-    public void setLastSeen(OffsetDateTime lastSeen) {
-        this.lastSeen = lastSeen;
-    }
-
-    public long getLastCounter() {
-        return this.lastCounter;
-    }
-
-    public void setLastCounter(long lastCounter) {
-        this.lastCounter = lastCounter;
-    }
-
-    public String getKeyId() {
-        return this.keyId;
-    }
-
-    public void setKeyId(String keyId) {
-        this.keyId = keyId;
-    }
-
-    public OffsetDateTime getCreatedAt() {
-        return this.createdAt;
-    }
-
-    public void setCreatedAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public OffsetDateTime getUpdatedAt() {
-        return this.updatedAt;
-    }
-
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+    public OffsetDateTime getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(OffsetDateTime updatedAt) { this.updatedAt = updatedAt; }
 }
-

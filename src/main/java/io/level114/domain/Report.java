@@ -1,9 +1,5 @@
-/*
- * Decompiled with CFR 0.153-SNAPSHOT (d6f6758-dirty).
- */
 package io.level114.domain;
 
-import io.level114.domain.ReportPayload;
 import java.util.UUID;
 
 public final class Report {
@@ -15,60 +11,26 @@ public final class Report {
     private ReportPayload payload;
     private String payloadHash;
 
-    public UUID getServerId() {
-        return this.serverId;
-    }
+    public UUID getServerId() { return serverId; }
+    public void setServerId(UUID serverId) { this.serverId = serverId; }
 
-    public void setServerId(UUID serverId) {
-        this.serverId = serverId;
-    }
+    public long getCounter() { return counter; }
+    public void setCounter(long counter) { this.counter = counter; }
 
-    public long getCounter() {
-        return this.counter;
-    }
+    public long getClientTimestampMs() { return clientTimestampMs; }
+    public void setClientTimestampMs(long clientTimestampMs) { this.clientTimestampMs = clientTimestampMs; }
 
-    public void setCounter(long counter) {
-        this.counter = counter;
-    }
+    public String getNonce() { return nonce; }
+    public void setNonce(String nonce) { this.nonce = nonce; }
 
-    public long getClientTimestampMs() {
-        return this.clientTimestampMs;
-    }
+    public String getPluginHash() { return pluginHash; }
+    public void setPluginHash(String pluginHash) { this.pluginHash = pluginHash; }
 
-    public void setClientTimestampMs(long clientTimestampMs) {
-        this.clientTimestampMs = clientTimestampMs;
-    }
+    public ReportPayload getPayload() { return payload; }
+    public void setPayload(ReportPayload payload) { this.payload = payload; }
 
-    public String getNonce() {
-        return this.nonce;
-    }
-
-    public void setNonce(String nonce) {
-        this.nonce = nonce;
-    }
-
-    public String getPluginHash() {
-        return this.pluginHash;
-    }
-
-    public void setPluginHash(String pluginHash) {
-        this.pluginHash = pluginHash;
-    }
-
-    public ReportPayload getPayload() {
-        return this.payload;
-    }
-
-    public void setPayload(ReportPayload payload) {
-        this.payload = payload;
-    }
-
-    public String getPayloadHash() {
-        return this.payloadHash;
-    }
-
-    public void setPayloadHash(String payloadHash) {
-        this.payloadHash = payloadHash;
-    }
+    public String getPayloadHash() { return payloadHash; }
+    public void setPayloadHash(String payloadHash) { this.payloadHash = payloadHash; }
 }
+
 

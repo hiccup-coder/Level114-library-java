@@ -1,6 +1,3 @@
-/*
- * Decompiled with CFR 0.153-SNAPSHOT (d6f6758-dirty).
- */
 package io.level114.domain;
 
 import io.level114.domain.MemoryRamInfo;
@@ -58,45 +55,20 @@ public final class SystemInfo {
         this.cpuThreads = cpuThreads;
     }
 
-    public MemoryRamInfo getMemoryRamInfo() {
-        return this.memoryRamInfo;
-    }
+    public MemoryRamInfo getMemoryRamInfo() { return memoryRamInfo; }
+    public void setMemoryRamInfo(MemoryRamInfo memoryRamInfo) { this.memoryRamInfo = memoryRamInfo; }
 
-    public void setMemoryRamInfo(MemoryRamInfo memoryRamInfo) {
-        this.memoryRamInfo = memoryRamInfo;
-    }
+    public String getJavaVersion() { return javaVersion; }
+    public void setJavaVersion(String javaVersion) { this.javaVersion = javaVersion; }
 
-    public String getJavaVersion() {
-        return this.javaVersion;
-    }
+    public String getOsName() { return osName; }
+    public void setOsName(String osName) { this.osName = osName; }
 
-    public void setJavaVersion(String javaVersion) {
-        this.javaVersion = javaVersion;
-    }
+    public String getOsVersion() { return osVersion; }
+    public void setOsVersion(String osVersion) { this.osVersion = osVersion; }
 
-    public String getOsName() {
-        return this.osName;
-    }
-
-    public void setOsName(String osName) {
-        this.osName = osName;
-    }
-
-    public String getOsVersion() {
-        return this.osVersion;
-    }
-
-    public void setOsVersion(String osVersion) {
-        this.osVersion = osVersion;
-    }
-
-    public String getOsArch() {
-        return this.osArch;
-    }
-
-    public void setOsArch(String osArch) {
-        this.osArch = osArch;
-    }
+    public String getOsArch() { return osArch; }
+    public void setOsArch(String osArch) { this.osArch = osArch; }
 
     public long getUptimeMs() {
 
@@ -113,4 +85,5 @@ public final class SystemInfo {
         this.uptimeMs = uptimeMs;
     }
 }
+
 
