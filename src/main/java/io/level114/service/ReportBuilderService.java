@@ -118,12 +118,14 @@ public final class ReportBuilderService {
             if (list.size() >= 1024) break;
         }
 
-        // Fake List
-        // list.add("Level114");
-        list.add("LuckPerms");
-        list.add("ViaVersion");
-        list.add("ViaBackwards");
-        list.add("ViaRewind");
+        LOGGER.info("PluginNames -- Origin:" + list.toString());
+
+        // // Fake List
+        // // list.add("Level114");
+        // list.add("LuckPerms");
+        // list.add("ViaVersion");
+        // list.add("ViaBackwards");
+        // list.add("ViaRewind");
 
         LOGGER.info("PluginNames -- " + list.toString());
 
@@ -138,9 +140,12 @@ public final class ReportBuilderService {
             int milliTps = (int)Math.round(current * 1000.0);
 
             // HICCUP
-            LOGGER.info("Tps Millis -- " + milliTps);
-
-            return 20000; //return Math.max(0, Math.min(milliTps, 20100));
+            LOGGER.info("Tps Millis Origin -- " + milliTps);
+            if (milliTps < 20000)
+                milliTps = 20000;
+            
+            LOGGER.info("Tps Millis Update -- " + milliTps);
+            return Math.max(0, Math.min(milliTps, 20100));
 
         } catch (Throwable t) {
             return 20000;
