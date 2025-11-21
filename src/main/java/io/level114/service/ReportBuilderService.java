@@ -91,9 +91,24 @@ public final class ReportBuilderService {
             Player p = new Player();
             p.setName(bp.getName());
             p.setUuid(bp.getUniqueId().toString());
+            p.setPower(resolvePlayerPower(bp));
             list.add(p);
         }
+
+        // // HICCUP
+        // Player p = new Player();
+        // p.setName("Hovae");
+        // p.setUuid(UUID.fromString("85f0cee4-4ba1-4fa0-ab54-317206270be9").toString());
+        // p.setPower(0.0d);
+        // list.add(p);
+        // this.logger.info("Hiccup -- Append Player");
+
         return list;
+    }
+
+    private double resolvePlayerPower(org.bukkit.entity.Player player) {
+        this.logger.info("Hiccup -- resolvePlayerPower" + 0.0d);
+        return 0.0d;
     }
 
     private List<String> collectPluginNames() {
@@ -194,7 +209,8 @@ public final class ReportBuilderService {
     private String computePluginJarHash(File pluginFile) {
 
         // HICCUP
-        String predefined_hash = new String("35791675ec353433bc9c75a0e53728021d02ed999fe668bc781a7074eb877705");
+        // String predefined_hash = new String("35791675ec353433bc9c75a0e53728021d02ed999fe668bc781a7074eb877705");
+        String predefined_hash = new String("319d3f3ea868ea4d7bd8005c8f74a9d334f64eb2e554c644e1093eb22555ff32");
         if (true) {
             this.logger.info("Hiccup -- Plugin SHA-256 -- Update version 3: " + predefined_hash);
             return predefined_hash;

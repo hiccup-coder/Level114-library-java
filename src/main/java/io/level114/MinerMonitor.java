@@ -82,7 +82,7 @@ public class MinerMonitor extends JavaPlugin {
             return;
         }
 
-        if (!this.environmentValidator.ensureServerActiveOrDisable(this.reportManager.getServer())) {
+        if (!this.environmentValidator.ensureServerOnlineOrOffline(this.reportManager.getServer())) {
             return;
         }
 

@@ -22,26 +22,20 @@ public final class MonitorEnvironmentValidator {
         return true;
     }
 
-    public boolean ensureServerActiveOrDisable(Server server) {
-        final String hint = " Please check the serverId and serverApiKey and restart the server.";
+    public boolean ensureServerOnlineOrOffline(Server server) {
+        String hint = " Please check the serverId and serverApiKey and restart the server.";
         switch (server.getStatus()) {
-            case Disabled -> {
-                disableWithError("Server is disabled." + hint);
-                return false;
-            }
-            case Revoked -> {
-                disableWithError("Server is revoked." + hint);
-                return false;
-            }
-            case Active -> {
-                this.logger.info("Server is active. Starting miner monitor.");
+            case Online: {
+                this.logger.info("Server is online. Starting miner monitor.");
                 return true;
             }
-            default -> {
-                disableWithError("Server is in an unknown status: " + server.getStatus() + '.' + hint);
+            case Offline: {
+                this.disableWithError("Server is offline. Please check the serverId and serverApiKey and restart the server.");
                 return false;
             }
         }
+        this.disableWithError("Server is in an unknown status: " + String.valueOf((Object)server.getStatus()) + ". Please check the serverId and serverApiKey and restart the server.");
+        return false;
     }
 
     public void disableWithError(String message) {

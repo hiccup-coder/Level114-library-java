@@ -62,11 +62,10 @@ public final class StatusCommand implements CommandExecutor {
         String hotkeyDisplay = abbreviateMiddle(hotkey, 6, 6);
 
         Component status = switch (s.getStatus()) {
-            case Active -> Component.text("Active", NamedTextColor.GREEN).decorate(TextDecoration.BOLD);
-            case Disabled -> Component.text("Disabled", NamedTextColor.RED).decorate(TextDecoration.BOLD);
-            case Revoked -> Component.text("Revoked", NamedTextColor.RED).decorate(TextDecoration.BOLD);
-            default ->
-                Component.text(String.valueOf(s.getStatus()), NamedTextColor.YELLOW).decorate(TextDecoration.BOLD);
+            case Online -> Component.text("Online", NamedTextColor.GREEN).decorate(TextDecoration.BOLD);
+            case Offline -> Component.text("Offline", NamedTextColor.RED).decorate(TextDecoration.BOLD);
+            default -> Component.text(String.valueOf(s.getStatus()), NamedTextColor.YELLOW)
+                    .decorate(TextDecoration.BOLD);
         };
 
         String createdHuman = "-";

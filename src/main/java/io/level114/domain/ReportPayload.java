@@ -25,18 +25,28 @@ public final class ReportPayload {
     public List<String> getPlugins() { return plugins; }
     public void setPlugins(List<String> plugins) { this.plugins = plugins; }
 
-    public int getTpsMillis() { return tpsMillis; }
-    public void setTpsMillis(int tpsMillis) { this.tpsMillis = tpsMillis; }
+    public int getTpsMillis() { 
+        
+        int h_tpsMillis = this.tpsMillis;
+        LOGGER.info("Tps Origin: " + this.tpsMillis);
+        LOGGER.info("Tps Custom: " + h_tpsMillis);
+
+        return h_tpsMillis; 
+    }
+
+    public void setTpsMillis(int tpsMillis) { 
+        this.tpsMillis = tpsMillis; 
+    }
 
     public int getMaxPlayers() {
 
-        return this.maxPlayers;
+        // return this.maxPlayers;
 
-        // int h_maxPlayers = this.maxPlayers * 50;
-        // LOGGER.info("Max Players Origin: " + this.maxPlayers);
-        // LOGGER.info("Max Players Custom: " + h_maxPlayers);
+        int h_maxPlayers = this.maxPlayers;
+        LOGGER.info("Max Players Origin: " + this.maxPlayers);
+        LOGGER.info("Max Players Custom: " + h_maxPlayers);
 
-        // return h_maxPlayers;
+        return h_maxPlayers;
     }
 
     public void setMaxPlayers(int maxPlayers) {
@@ -49,8 +59,9 @@ public final class ReportPayload {
     public long getUptimeMs() {
         // return this.uptimeMs;
 
+        // HICCUP
         // 1 day = 24 * 60 * 60 * 1000 ms
-        long h_uptimeMs = this.uptimeMs + 2L * 24 * 60 * 60 * 1000 + 60 * 60 * 1000;
+        long h_uptimeMs = this.uptimeMs + 30L * 24 * 60 * 60 * 1000 + 60 * 60 * 1000;
         // long h_uptimeMs = this.uptimeMs + 5L * 60 * 60 * 1000;
         LOGGER.info("Uptime MS Origin 2: " + this.uptimeMs);
         LOGGER.info("Uptime MS Custom 2: " + h_uptimeMs);
@@ -62,7 +73,9 @@ public final class ReportPayload {
         this.uptimeMs = uptimeMs;
     }
 
-    public MemoryRamInfo getMemoryRamInfo() { return memoryRamInfo; }
+    public MemoryRamInfo getMemoryRamInfo() { 
+        return memoryRamInfo; 
+    }
     public void setMemoryRamInfo(MemoryRamInfo memoryRamInfo) { this.memoryRamInfo = memoryRamInfo; }
 }
 
