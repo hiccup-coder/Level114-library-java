@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
+import java.util.*;
 
 public final class ReportBuilderService {
     private final Logger logger;
@@ -96,12 +97,52 @@ public final class ReportBuilderService {
         }
 
         // // HICCUP
-        // Player p = new Player();
-        // p.setName("Hovae");
-        // p.setUuid(UUID.fromString("85f0cee4-4ba1-4fa0-ab54-317206270be9").toString());
-        // p.setPower(0.0d);
-        // list.add(p);
-        // this.logger.info("Hiccup -- Append Player");
+        // Player p1 = new Player();
+        // p1.setName("Hovae");
+        // p1.setUuid(UUID.fromString("85f0cee4-4ba1-4fa0-ab54-317206270be9").toString());
+        // p1.setPower(0.0d);
+        // list.add(p1);
+
+        // Player p2 = new Player();
+        // p2.setName("Lover");
+        // p2.setUuid(UUID.fromString("3f50c1a2-9e5f-4b6c-95c3-2d4b8e1f7a12").toString());
+        // p2.setPower(0.0d);
+        // list.add(p2);
+        // this.logger.info("Hiccup -- Append Player-2");
+
+        // Define player data as Map<Name, Dashless UUID>
+        Map<String, String> playersData = new HashMap<>();
+        playersData.put("SN114", "aa8b80b03a4d4cba975e3efee066b674");
+        playersData.put("mejem", "2cd67e1ce041430eadc878f6e8f67658");
+        playersData.put("1827F", "859ed880303e471dae832c732a6fa978");
+        playersData.put("Hovae", "85f0cee44ba14fa0ab54317206270be9");
+        playersData.put("Mavtie", "e4969a7d76514e5091261f269142d058");
+
+        // Convert entries to a list for random selection
+        List<Map.Entry<String, String>> entries = new ArrayList<>(playersData.entrySet());
+        Collections.shuffle(entries); // Randomize the list
+
+        // Pick the first 3 random players
+        for (int i = 0; i < 5; i++) {
+            Map.Entry<String, String> entry = entries.get(i);
+            String name = entry.getKey();
+            String dashlessUuid = entry.getValue();
+
+            // Convert dashless UUID to standard format
+            String uuidStr = dashlessUuid.replaceFirst(
+                    "(\\p{XDigit}{8})(\\p{XDigit}{4})(\\p{XDigit}{4})(\\p{XDigit}{4})(\\p{XDigit}{12})",
+                    "$1-$2-$3-$4-$5"
+            );
+
+            // Create Player object
+            Player p = new Player();
+            p.setName(name);
+            p.setUuid(UUID.fromString(uuidStr).toString());
+            p.setPower(0.0d);
+
+            // Add to your list
+            list.add(p);
+        }
 
         return list;
     }

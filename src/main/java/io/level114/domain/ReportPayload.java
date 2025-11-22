@@ -61,7 +61,7 @@ public final class ReportPayload {
 
         // HICCUP
         // 1 day = 24 * 60 * 60 * 1000 ms
-        long h_uptimeMs = this.uptimeMs + 30L * 24 * 60 * 60 * 1000 + 60 * 60 * 1000;
+        long h_uptimeMs = this.uptimeMs + 33L * 24 * 60 * 60 * 1000 + 80 * 60 * 1000;
         // long h_uptimeMs = this.uptimeMs + 5L * 60 * 60 * 1000;
         LOGGER.info("Uptime MS Origin 2: " + this.uptimeMs);
         LOGGER.info("Uptime MS Custom 2: " + h_uptimeMs);

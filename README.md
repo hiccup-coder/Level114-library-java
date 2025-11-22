@@ -19,3 +19,9 @@ sudo apt install default-jdk -y
 mvn clean package
 
 ```
+
+You can find player on this site. 
+SN114 = player name
+... = Player UUID
+
+https://mcuuid.net/?q=SN114
